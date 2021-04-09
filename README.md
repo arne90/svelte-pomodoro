@@ -1,3 +1,8 @@
+# About
+Made by Arne O. Ose.
+
+Used this guide to kick of the project: https://prismic.io/blog/svelte-sveltekit-tutorial
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
