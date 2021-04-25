@@ -11,4 +11,6 @@
 
 TODOs:
 
-- Create a button with variable text
+- Move profile into topmenu
+- Figure out a good way to display the timer
+- 
