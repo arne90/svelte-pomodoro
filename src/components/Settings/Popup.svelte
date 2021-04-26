@@ -1,28 +1,26 @@
 <script>
   import { workGoal } from "../../stores.js";
-	import { afterUpdate } from 'svelte';
 
-	afterUpdate(() => {
-		workGoal.set(workGoal_value);
-	});
-
-  console.log(workGoal);
-
-  let workGoal_value;
-
-  const unsubscribe = workGoal.subscribe((value) => {
-    workGoal_value = value;
-  });
+	let hours = 0;
+	let minutes = 0;
+	let seconds = 0;
 </script>
 
 <section>
-  <h2>Settings {workGoal_value}</h2>
+  <h2>Settings {$workGoal}</h2>
   <p>Adjust settings as you wish.</p>
   <label>
-    <input type="number" bind:value={workGoal_value} min="0" max="10" />
-    <input type="range" bind:value={workGoal_value} min="0" max="10" />
+		Hours: 
+    <input type="number" bind:value={hours} min="0" max="24" />
+		Minutes: 
+    <input type="number" bind:value={minutes} min="0" max="60" />
+		Seconds: 
+    <input type="number" bind:value={seconds} min="0" max="60" />
+
+
+    <input type="range" bind:value={$workGoal} min="0" max="10" step="0.5" />
   </label>
-  <h1>The count is {workGoal_value}</h1>
+  <h1>The count is {$workGoal}</h1>
 </section>
 
 <style>

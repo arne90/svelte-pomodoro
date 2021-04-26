@@ -13,4 +13,5 @@ TODOs:
 
 - Move profile into topmenu
 - Figure out a good way to display the timer
-- 
+- Create  a progressbar based on the amount of work hours selected.
+- Add morphed glass effect on Modal(?)

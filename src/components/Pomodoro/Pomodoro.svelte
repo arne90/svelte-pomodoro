@@ -1,14 +1,14 @@
 <script>
   import Countdown from "./Countdown.svelte";
-import TimerControlMenu from "./TimerControlMenu.svelte";
+  import TimerControlMenu from "./TimerControlMenu.svelte";
   import TimerOptionsMenu from "./TimerOptionsMenu.svelte";
+  import { selectedDuration } from "../../stores.js";
 
-  export let minutes = 25;
-  export let seconds = 0;
+  // export let minutes = $selectedDuration;
+  // export let seconds = 0;
   export let startTimer = false;
-
 </script>
 
-<TimerOptionsMenu bind:minutes bind:seconds />
-<Countdown bind:minutes bind:seconds bind:startTimer/>
-<TimerControlMenu bind:startTimer/>
+<TimerOptionsMenu />
+<Countdown bind:startTimer />
+<TimerControlMenu bind:startTimer />

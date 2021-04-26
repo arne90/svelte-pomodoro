@@ -1,10 +1,35 @@
 <script>
-  import { onMount } from "svelte";
-  export let minutes;
-  export let seconds;
+  import { workDuration, selectedDuration, sessionDuration } from "../../stores.js";
+  import { beforeUpdate, afterUpdate } from 'svelte';
+
+
+  $: minutes = $selectedDuration/60;
+  $: seconds = $selectedDuration%60;
+
+  console.log({seconds});
+  $: console.log($selectedDuration);
+  $: console.log(minutes);
+  $: console.log(seconds);
+
+  $: if (sessionDuration === 0) {
+    minutes = $selectedDuration/60;
+    seconds = 0;
+  }
+
+  // let seconds = 0;
   export let startTimer;
-  $: shownSeconds = seconds < 10 ? "0" + seconds : seconds;
-  $: shownMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+  // beforeUpdate(() => {
+    
+  // })
+
+  // afterUpdate(() => {
+  //   if (sessionDuration === 0) {
+  //     console.log("Session duration is 0");
+  //   }
+    
+	// });
+
 
 
   var timer = null;
@@ -12,6 +37,8 @@
   function tick() {
     if (minutes === 0 && seconds === 0) {
       // Finished
+      console.log("Timer is done, something should happen!");
+      $sessionDuration = 0;
       startTimer = false;
       return;
     }
@@ -20,6 +47,10 @@
       seconds = 60;
     }
     seconds -= 1;
+    // EVERY SECOND
+    $sessionDuration ++;
+    $workDuration ++;
+
     start(); // restart the timer
   }
 
@@ -37,24 +68,9 @@
     stop();
   }
 
-  // return () => {
-  //   clearInterval(interval);
-  // };
 
-  // if (minutes < 10) {
-  //   $shownMinutes = "0" + minutes;
-  // } else {
-  //   $shownMinutes = minutes;
-  // }
-  // if (seconds < 10) {
-  //   $shownSeconds = "0" + seconds.toString();
-  // } else {
-  //   $shownSeconds = seconds;
-  // }
-
-  console.log({ shownMinutes });
 </script>
 
 <section>
-  <p>{shownMinutes + ":" + shownSeconds}</p>
+  <p>{(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)}</p>
 </section>

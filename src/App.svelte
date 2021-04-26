@@ -1,6 +1,7 @@
 <script>
   import { authState } from "rxfire/auth";
   import Pomodoro from "./components/Pomodoro/Pomodoro.svelte";
+  import Progressbar from "./components/Progressbar/Progressbar.svelte";
   import Settings from "./components/Settings/Settings.svelte";
   import { auth, googleProvider } from "./firebase";
 
@@ -15,11 +16,12 @@
 
 <section>
   <div class="background">
-  <Settings />
-  <Pomodoro />
-  <!-- <IndexModal /> -->
+    <Settings />
+    <Pomodoro />
+    <Progressbar />
+    <!-- <IndexModal /> -->
 
-  <!-- {#if user}
+    <!-- {#if user}
     <Profile {...user} />
     <button on:click={() => auth.signOut()}>Logout</button>
     <hr />
@@ -27,7 +29,7 @@
   {:else}
     <button on:click={login}> Signin with Google </button>
   {/if} -->
-</div>
+  </div>
 </section>
 
 <style>
@@ -40,6 +42,4 @@
     height: 100vh;
     background: black;
   }
-
- 
 </style>
