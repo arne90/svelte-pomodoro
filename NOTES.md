@@ -15,3 +15,7 @@ TODOs:
 - Figure out a good way to display the timer
 - Create  a progressbar based on the amount of work hours selected.
 - Add morphed glass effect on Modal(?)
+- Options:
+     Count time before break timer starts (if your are continuing work)
+     Daily goal / Weekly goal
+     Count break time (yes/no)

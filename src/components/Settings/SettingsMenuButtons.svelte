@@ -13,6 +13,8 @@
 	const showPopupLong = () => {
 		open(PopupLong, { message: "It's a popup with long text!" });
 	};
+
+	// showSettingsMenu();
 	
 </script>
 

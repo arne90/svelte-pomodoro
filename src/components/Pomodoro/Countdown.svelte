@@ -1,38 +1,16 @@
 <script>
   import { workDuration, selectedDuration, sessionDuration } from "../../stores.js";
-  import { beforeUpdate, afterUpdate } from 'svelte';
-
 
   $: minutes = $selectedDuration/60;
   $: seconds = $selectedDuration%60;
 
-  console.log({seconds});
-  $: console.log($selectedDuration);
-  $: console.log(minutes);
-  $: console.log(seconds);
-
-  $: if (sessionDuration === 0) {
+  $: if ($sessionDuration === 0) { // Handles fastforwarding
     minutes = $selectedDuration/60;
-    seconds = 0;
+    seconds = $selectedDuration%60;
   }
 
-  // let seconds = 0;
   export let startTimer;
-
-  // beforeUpdate(() => {
-    
-  // })
-
-  // afterUpdate(() => {
-  //   if (sessionDuration === 0) {
-  //     console.log("Session duration is 0");
-  //   }
-    
-	// });
-
-
-
-  var timer = null;
+  let timer = null;
 
   function tick() {
     if (minutes === 0 && seconds === 0) {

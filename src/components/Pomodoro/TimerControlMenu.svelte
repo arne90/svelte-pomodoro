@@ -6,8 +6,10 @@
   function fastForward() {
     let remainingDuration = $selectedDuration - $sessionDuration;
     workDuration.update(workDuration => workDuration + remainingDuration);
-    startTimer = false;
     sessionDuration.set(0);
+    
+
+    startTimer = false;
   }
 
   export let startTimer;

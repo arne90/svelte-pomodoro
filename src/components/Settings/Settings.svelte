@@ -4,6 +4,9 @@
   import SettingsMenuButtons from "./SettingsMenuButtons.svelte";
 </script>
 
-<Modal show={$modal}>
+
+
+<!-- <Modal show={$modal}> --> 
+  <Modal show={true}>
   <SettingsMenuButtons />
 </Modal>
