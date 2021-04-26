@@ -1,12 +1,17 @@
 <script>
-  import { workDuration, selectedDuration, sessionDuration } from "../../stores.js";
+  import {
+    workDuration,
+    selectedDuration,
+    sessionDuration,
+  } from "../../stores.js";
 
-  $: minutes = $selectedDuration/60;
-  $: seconds = $selectedDuration%60;
+  $: minutes = $selectedDuration / 60;
+  $: seconds = $selectedDuration % 60;
 
-  $: if ($sessionDuration === 0) { // Handles fastforwarding
-    minutes = $selectedDuration/60;
-    seconds = $selectedDuration%60;
+  $: if ($sessionDuration === 0) {
+    // Handles fastforwarding
+    minutes = $selectedDuration / 60;
+    seconds = $selectedDuration % 60;
   }
 
   export let startTimer;
@@ -26,8 +31,8 @@
     }
     seconds -= 1;
     // EVERY SECOND
-    $sessionDuration ++;
-    $workDuration ++;
+    $sessionDuration++;
+    $workDuration++;
 
     start(); // restart the timer
   }
@@ -45,10 +50,17 @@
   } else {
     stop();
   }
-
-
 </script>
 
-<section>
-  <p>{(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds)}</p>
-</section>
+<div class="clock">
+  {(minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (seconds < 10 ? "0" + seconds : seconds)}
+</div>
+
+<style>
+  .clock {
+    font-size: 7em;
+    font-weight: 800;
+  }
+</style>
